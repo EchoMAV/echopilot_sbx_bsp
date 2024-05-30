@@ -5,24 +5,18 @@ SERIAL2_PROTOCOL 2
 SERIAL2_BAUD 500
 
 #Default setup for voltage/current monitoring
-#This probably won't work because the BATT isn't enabled by default
-# Set BATT_MONITOR to Analog voltage and current
+#This may not work because the BATT isn't enabled by default
+#Set BATT_MONITOR to Analog voltage and current
 BATT_MONITOR 4
 BATT_VOLT_PIN 16
 BATT_CURR_PIN 17
+BATT_AMP_PERVLT 1.636
+BATT_CAPACITY 20000
+BATT_CRT_VOLT 16.2
+BATT_VOLT_MULT 13.161
 
-#Default to set RC1-4 for non-standard limits. This prevents GCS from thinking the radio needs calibration, since we won't typically use a RC radio with this board
-RC1_MIN 1101
-RC1_MAX 1901
-RC2_MIN 1101
-RC2_MAX 1901
-RC3_MIN 1101
-RC3_MAX 1901
-RC4_MIN 1101
-RC4_MAX 1901
-
-#disable throttle failsafe
-FS_THR_ENABLE 0
+#Only PPM, SBUS,SBUS_NI and FastSBUS enabled in for RC
+RC_PROTOCOLS 8218
 
 #set up arming checks, primarily remove RC check
 ARMING_CHECK 158
@@ -30,3 +24,5 @@ ARMING_CHECK 158
 RTL_ALT 6000
 #set GCS failsafe to SmartRTL or RTL
 FS_GCS_ENABLE 3
+
+
