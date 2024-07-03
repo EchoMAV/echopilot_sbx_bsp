@@ -9,7 +9,11 @@ SERIAL2_BAUD 500
 # Set BATT_MONITOR to Analog voltage and current
 BATT_MONITOR 4
 BATT_VOLT_PIN 16
-BATT_CURR_PIN 17
+BATT_CURR_PIN 19
+BATT_AMP_PERVLT=30.3
+BATT_AMP_OFFSET=0.31
+BATT_VOLT_MULT=13.37
+
 
 #Default to set RC1-4 for non-standard limits. This prevents GCS from thinking the radio needs calibration, since we won't typically use a RC radio with this board
 RC1_MIN 1101
