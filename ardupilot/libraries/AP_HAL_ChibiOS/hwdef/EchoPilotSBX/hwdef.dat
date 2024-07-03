@@ -9,12 +9,10 @@ MCU STM32H7xx STM32H743xx
 # crystal frequency
 OSCILLATOR_HZ 16000000
 
-# Enable all IMUs to be used and therefore three active EKF Lanes
-define HAL_CHIBIOS_ARCH_FMUV5 1
-
 # board ID for firmware load
 APJ_BOARD_ID 5502
 
+# Enable all IMUs to be used and therefore three active EKF Lanes
 define HAL_EKF_IMU_MASK_DEFAULT 7
 
 # bootloader takes first sector
@@ -249,7 +247,7 @@ PH5 FMU_PSOC_2 OUTPUT LOW GPIO(63)
 
 # SPI devices
 SPIDEV ms5611	        SPI4 DEVID3  BARO_CS       MODE3 20*MHZ 20*MHZ
-SPIDEV ms5611_2	SPI5 DEVID2  BARO_CS2      MODE3 20*MHZ 20*MHZ
+SPIDEV ms5611_2	       SPI5 DEVID2  BARO_CS2      MODE3 20*MHZ 20*MHZ
 SPIDEV icm42688        SPI1 DEVID1  ICM42688_CS   MODE3  2*MHZ  8*MHZ
 SPIDEV icm42688_2      SPI1 DEVID2  ICM42688_CS2  MODE3  2*MHZ  8*MHZ
 SPIDEV icm42688_3      SPI4 DEVID1  ICM42688_CS3  MODE3  2*MHZ  8*MHZ
@@ -263,6 +261,7 @@ IMU Invensensev3 SPI:icm42688_3 ROTATION_PITCH_180
 define HAL_DEFAULT_INS_FAST_SAMPLE 7
 
 # onboard BMM150 compass
+# purposely have wrong address for BMM150 because there is mag interference on board = bad calibration, unsure why
 COMPASS BMM150 I2C:0:0x12 false ROTATION_NONE
 #define HAL_PROBE_EXTERNAL_I2C_COMPASSES
 
@@ -304,7 +303,7 @@ define HAL_WITH_RAMTRON 1
 define HAL_HAVE_SAFETY_SWITCH 1
 define HAL_COMPASS_AUTO_ROT_DEFAULT 2
 
-DMA_PRIORITY SDMMC* UART8* ADC* SPI1* TIM*
+DMA_PRIORITY SDMMC* ADC* UART* USART* SPI* TIM*
 
 # enable FAT filesystem support (needs a microSD defined via SDMMC)
 define HAL_OS_FATFS_IO 1
